@@ -1,0 +1,155 @@
+
+
+
+
+<style>
+    input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        border-bottom: 1px solid #2B134D;
+    }
+    table {
+        border-bottom-right-radius:15px;
+        border-bottom-left-radius:15px;
+    }
+    .clsSubmit{
+        cursor:pointer;
+        border: none;
+        background-color: #069ed1;
+        border-radius: 15px;
+        color: white;padding: 8px 115px;text-align: center;text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: bold
+    }
+    body {
+        /*background: url('resource/Image/cbcs_background123123.jpg') no-repeat center center fixed; */
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+        opacity: 0.9;
+        filter: alpha(opacity=50); /* For IE8 and earlier */
+        height: 100%;
+        margin: 0;
+    }
+    .bg {
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+
+<html>
+    <head>
+        <title>SASTRA Deemed University - Parent Web Interface</title>
+        <link href='resource/Image/sastra_logo_1.jpg' type='Image/x-icon' rel='icon'/> 
+        <link type="text/css" href="resource/css/jquery-ui-1.8.15.custom.css" rel="stylesheet"/>
+        <script type="text/javascript" src="resource/js/jquery-1.6.2.min.js"></script>
+        <script type="text/javascript" src="resource/js/jquery-ui-1.8.15.custom.min.js"></script>        
+
+        <script type="text/javascript">
+            function submitData() {
+                $('#txtPA').val('0');
+                var ans = $.trim($("#answer").val());
+                if (ans.length != 5) {
+                    alert('Invalid captcha!');
+                    $('#answer').focus();
+                    return false;
+                }
+                ans = $('#txtRegNumber').val().length;
+                if (ans < 9 || ans > 10) {
+                    alert("Invalid register number!");
+                    $('#txtRegNumber').focus();
+                    return false;
+                }
+                ans = $('#txtPwd').val().length;
+                if (ans != 8) {
+                    alert("Invalid password!");
+                    $('#txtPwd').focus();
+                    return false;
+                }
+                $('#txtPA').val('1');
+                $("#frmLogin").submit();
+            }
+
+            function forgotpassword() {
+                var ans = $('#txtRegNumber').val().length;
+                if (ans < 9 || ans > 10) {
+                    alert("Invalid register number!");
+                    $('#txtRegNumber').focus();
+                    return false;
+                }
+                $('#txtPA').val('2');
+                $("#frmLogin").submit();
+            }
+
+        </script>
+    </head>
+    <body class="bg">
+        <form id="frmLogin" method="post">
+            <div align="center" style="margin-top:20px;border-bottom-right-radius:15px;
+                 border-bottom-left-radius:15px;"><img style="width:350px;" src="sastraw/sastraLogo.jpeg"></div>
+            <div style="height:5px">&nbsp;</div>
+            <div style="width:450px;margin:0 auto;vertical-align: central;" align="center">
+                <div style="text-align: center;vertical-align: middle;line-height: 35px;height:35px;background-color:#069ed1;color:white;font-family: sans-serif;font-weight: bold;font-size: 15px;width:100%;border-radius: 15px 15px 0 0; " align="center">
+                    PARENT WEB INTERFACE
+                </div>
+                <div style="background-color:#2B134D;height:5px">&nbsp;</div>
+                <table width="100%" border="0" cellpadding="0" cellspacing="0"  style="height:250px;border: 1px solid #bbb;box-shadow:0 10px 10px -5px; color: #bbb;background-color:white">
+                    <tr height="50px" style="font-family: sans-serif;font-size: 15px;">
+                        <td align="right">Register number&nbsp;&nbsp;</td>
+                        <td><input type="text" size="40px"  name="txtRegNumber" id="txtRegNumber"></td>
+                    </tr>
+                    <tr height="30px" style="font-family: sans-serif;font-size: 15px;">
+                        <td align="right">* Date of birth&nbsp;&nbsp;</td>
+                        <td>
+                            <input type="password" size="40px" name="txtPwd" id="txtPwd" placeholder="ddmmyyyy">
+                            <input type="hidden" id="txtPA" name="txtPA" value="0">
+                        </td>
+                    </tr>
+                    <tr height="50px"  style="font-family: sans-serif;font-size: 15px;">
+                        <td align="right">Enter&nbsp;captcha&nbsp;&nbsp;</td>
+                        <td title="Click Ctrl+R if you can't able to see captcha image" >
+                            <input id="answer" name="answer">&nbsp;
+                        </td>
+                    </tr>                                         
+                    <tr height="60px"  style="font-family: sans-serif;font-size: 15px;">
+                        <td align="right"></td>
+                        <td>
+                            <img id="imgCaptcha" src="stickyImg" alt="Click here to load captcha image" onclick="this.src = 'stickyImg?1'"/>
+                        </td>
+                    </tr>
+                    
+                    <tr class="ui-state-error">
+                        <td style="text-align: center" colspan="2">
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr height="40px" align="center" style="font-family: sans-serif;font-weight: bold;font-size: 15px;">
+                        <td colspan="2"><input type="button" class="clsSubmit" value="Submit"  onclick="submitData()"></td></tr>
+                            
+                    <tr height="5px" ><td colspan="2">&nbsp;</td></tr>
+                    <tr height="5px" ><td colspan="2"><div style="text-align:center">* For login use your wards Date of Birth as password. [Date format ddmmyyyy E.g. 03121990]</div></td></tr>
+                    <tr><td>&nbsp;</td><td></td></tr>
+                </table>
+                    
+            </div>
+        </form>
+        <div style="position: absolute; bottom: 1;left: 0;width: 100%;text-align: center;padding-top: 5px;padding-bottom: 5px;height:20px;
+             background-color: lightgrey;color: white;"><a href="http://www.firstlineinfotech.com" target="_blank" style="text-decoration: none;"><font style="font-family: sans-serif; font-size: 11px;color:white;">Powered by eVarsity ERP® - Firstline Infotech Pvt. Ltd.</font></span></a>
+        </div>
+        <script type="text/javascript">
+            setTimeout(funLoadCImg, 1000);
+            function funLoadCImg() {
+                var d = new Date();
+                $('#imgCaptcha').attr('src', 'stickyImg?ms=' + d.getMilliseconds());
+            }
+        </script>
+    </body>
+</html>
